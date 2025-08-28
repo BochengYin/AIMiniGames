@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "TodoWrite",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/stop_notification.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command", 
+            "command": "python .claude/hooks/type_checker.py \"$TOOL_USE_FILE_PATH\""
+          }
+        ]
+      }
+    ]
+  }
+}
